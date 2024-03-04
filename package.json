@@ -25,5 +25,7 @@
     "tiny-glob": "^0.2.9",
     "typescript": "^5.3.3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "swiper": "^11.0.7"
+  }
 }
