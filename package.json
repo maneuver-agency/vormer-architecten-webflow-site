@@ -26,6 +26,7 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
+    "htmx.org": "^1.9.10",
     "swiper": "^11.0.7"
   }
 }
