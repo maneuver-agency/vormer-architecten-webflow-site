@@ -26,6 +26,11 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
+    "@finsweet/attributes-cmscore": "^1.13.0",
+    "@finsweet/attributes-cmsload": "^1.12.0",
+    "@finsweet/attributes-scrolldisable": "^1.6.2",
+    "@finsweet/ts-utils": "^0.40.0",
+    "gsap": "^3.12.5",
     "htmx.org": "^1.9.10",
     "swiper": "^11.0.7"
   }
