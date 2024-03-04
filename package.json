@@ -25,5 +25,8 @@
     "tiny-glob": "^0.2.9",
     "typescript": "^5.3.3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "htmx.org": "^1.9.10",
+    "swiper": "^11.0.7"
+  }
 }
