@@ -1,5 +1,3 @@
-import '@finsweet/attributes-cmsload';
-
 window.fsAttributes = window.fsAttributes || [];
 window.fsAttributes.push([
   'cmsload',
