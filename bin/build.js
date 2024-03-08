@@ -1,37 +1,31 @@
-import glob from 'tiny-glob';
+import esbuild from 'esbuild';
 
 const DEV_BUILD_PATH = './dist/dev';
 const PROD_BUILD_PATH = './dist';
 const production = process.env.NODE_ENV === 'production';
 
+const BUILD_DIRECTORY = !production ? DEV_BUILD_PATH : PROD_BUILD_PATH;
+
 const files = ['./src/*.ts', './src/components/*.ts', './src/pages/*.ts'];
 
-const result = await Bun.build({
-  entrypoints: (await Promise.all(files.map((pattern) => glob(pattern)))).flat(),
-  outdir: !production ? DEV_BUILD_PATH : PROD_BUILD_PATH,
-  sourcemap: !production ? 'external' : 'none',
-  minify: !production ? false : true,
+const buildSettings = {
+  entryPoints: files,
   bundle: true,
-});
-
-if (!result.success) {
-  console.error('Build failed', result.logs);
-}
+  outdir: BUILD_DIRECTORY,
+  minify: !production ? false : true,
+  sourcemap: !production,
+  target: production ? 'es2017' : 'esnext',
+};
 
 if (!production) {
-  const server = Bun.serve({
+  let ctx = await esbuild.context(buildSettings);
+
+  let { port } = await ctx.serve({
+    servedir: BUILD_DIRECTORY,
     port: 3000,
-    development: true,
-    fetch(req) {
-      const filePath = DEV_BUILD_PATH + new URL(req.url).pathname;
-      const file = Bun.file(filePath);
-      return new Response(file);
-    },
-    error() {
-      console.log('Error handler triggered');
-      return new Response('File not found', { status: 404 });
-    },
   });
 
-  console.log(`Serving at http://localhost:${server.port}`);
+  console.log(`Serving at http://localhost:${port}`);
+} else {
+  esbuild.build(buildSettings);
 }

@@ -16,6 +16,8 @@ declare global {
      * A wrapper function to directly console log when debug mode is active
      */
     DEBUG: (...args: any[]) => void;
+
+    gsap: GSAP;
   }
 
   // Extend `querySelector` and `querySelectorAll` function to stop the nagging of converting `Element` to `HTMLElement` all the time

@@ -18,6 +18,7 @@
     "@typescript-eslint/eslint-plugin": "^6.19.1",
     "@typescript-eslint/parser": "^6.19.1",
     "cross-env": "^7.0.3",
+    "esbuild": "^0.20.1",
     "eslint": "^8.56.0",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.1.3",
@@ -26,6 +27,11 @@
     "typescript": "^5.3.3"
   },
   "dependencies": {
+    "@finsweet/attributes-cmscore": "^1.13.0",
+    "@finsweet/attributes-cmsload": "^1.12.0",
+    "@finsweet/attributes-scrolldisable": "^1.6.2",
+    "@finsweet/ts-utils": "^0.40.0",
+    "gsap": "^3.12.5",
     "htmx.org": "^1.9.10",
     "swiper": "^11.0.7"
   }
