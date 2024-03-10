@@ -26,6 +26,8 @@ function addJS() {
 
   if (window.ENV === 'dev') {
     fetchLocalScripts();
+  } else {
+    appendScripts();
   }
 }
 
