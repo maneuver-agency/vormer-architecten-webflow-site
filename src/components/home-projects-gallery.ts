@@ -1,5 +1,5 @@
 import 'fslightbox';
-import { SCRIPTS_LOADED_EVENT } from 'src/entry';
+import { SCRIPTS_LOADED_EVENT } from 'src/constants';
 
 const PROJECT_ITEM_SELECTOR = '.projects_item-link-wrapper';
 const LIGHTBOX_WRAPPER_SELECTOR = '[data-lightbox-wrapper]';

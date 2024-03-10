@@ -3,6 +3,7 @@
  * Fetches scripts from localhost or production site depending on the setup
  * Polls `localhost` on page load, else falls back to deriving code from production URL
  */
+import { SCRIPTS_LOADED_EVENT } from './constants';
 import './dev/debug';
 import './dev/env';
 
@@ -11,8 +12,6 @@ const PRODUCTION_BASE =
   'https://cdn.jsdelivr.net/gh/parasshah195/vormer-architecten-webflow-site/dist/';
 
 window.JS_SCRIPTS = new Set();
-
-export const SCRIPTS_LOADED_EVENT = 'scriptsLoaded';
 
 const SCRIPT_LOAD_PROMISES: Array<Promise<unknown>> = [];
 
