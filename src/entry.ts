@@ -81,6 +81,3 @@ function fetchLocalScripts() {
       appendScripts();
     });
 }
-
-// window.Webflow = window.Webflow || [];
-// window.Webflow.push(() => {});

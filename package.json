@@ -28,6 +28,7 @@
   },
   "dependencies": {
     "@finsweet/ts-utils": "^0.40.0",
+    "fslightbox": "^3.4.1",
     "gsap": "^3.12.5",
     "htmx.org": "^1.9.10",
     "swiper": "^11.0.7"
