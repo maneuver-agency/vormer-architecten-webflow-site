@@ -1,23 +1,27 @@
 import 'fslightbox';
 import { SCRIPTS_LOADED_EVENT } from 'src/constants';
 
+const PROJECTS_LIST_SELECTOR = '[data-projects-list]';
 const PROJECT_ITEM_SELECTOR = '.projects_item-link-wrapper';
 const LIGHTBOX_WRAPPER_SELECTOR = '[data-lightbox-wrapper]';
 const LIGHTBOX_CONTENT_WRAPPER_SELECTOR = '[data-lightbox-content-wrapper]';
 const LIGHTBOX_CLOSE_BTN_ATTRIBUTE = 'data-lightbox-close';
 
 let lightboxWrapperEl: HTMLElement | null;
+let projectsListEl: HTMLElement | null;
 let projectItemsList: NodeListOf<HTMLElement>;
 
 window.addEventListener(SCRIPTS_LOADED_EVENT, () => {
   lightboxWrapperEl = document.querySelector(LIGHTBOX_WRAPPER_SELECTOR);
+  projectsListEl = document.querySelector(PROJECTS_LIST_SELECTOR);
   projectItemsList = document.querySelectorAll(PROJECT_ITEM_SELECTOR);
 
-  if (!lightboxWrapperEl || !projectItemsList.length) {
+  if (!lightboxWrapperEl || !projectsListEl || !projectItemsList.length) {
     window.DEBUG(
-      'No lightbox wrapper found or no project items found.',
-      { lightboxWrapperEl },
-      { projectItemsList }
+      'One of these elements not found on page - Lightbox wrapper, Projects List, or any Project items.',
+      'Looking for',
+      { LIGHTBOX_WRAPPER_SELECTOR, PROJECTS_LIST_SELECTOR, PROJECT_ITEM_SELECTOR },
+      { lightboxWrapperEl, projectsListEl, projectItemsList }
     );
     return;
   }
@@ -47,12 +51,6 @@ window.fsAttributes.push([
 function onProjectsItemLoad() {
   document.querySelectorAll(`${PROJECT_ITEM_SELECTOR}[data-slug]`).forEach((item) => {
     initHTMX(item);
-
-    item.addEventListener('click', (clickEv) => {
-      window.gsap.set(lightboxWrapperEl, { display: 'block' });
-      window.gsap.set('body', { overflow: 'hidden' });
-      window.gsap.to(lightboxWrapperEl, { opacity: 1, duration: 0.3 });
-    });
   });
 }
 
@@ -76,6 +74,19 @@ function initLightbox() {
     LIGHTBOX_CONTENT_WRAPPER_SELECTOR
   );
 
+  // open
+  projectsListEl?.addEventListener('click', (clickEv) => {
+    const target = clickEv.target as HTMLElement;
+    if (!target.closest(PROJECT_ITEM_SELECTOR)) {
+      return;
+    }
+
+    window.gsap.set(lightboxWrapperEl, { display: 'block' });
+    window.gsap.set('body', { overflow: 'hidden' });
+    window.gsap.to(lightboxWrapperEl, { opacity: 1, duration: 0.3 });
+  });
+
+  // close
   lightboxWrapperEl?.addEventListener('click', (clickEv) => {
     const target = clickEv.target as HTMLElement;
     if (!target.closest(`[${LIGHTBOX_CLOSE_BTN_ATTRIBUTE}]`)) {
@@ -99,7 +110,7 @@ function initLightbox() {
 
 function refreshLightbox() {
   htmx.onLoad(function (content) {
-    window.DEBUG('htmx loaded', content);
+    window.DEBUG('htmx content loaded', content);
     refreshFsLightbox();
   });
 }
