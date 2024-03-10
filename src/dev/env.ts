@@ -11,6 +11,7 @@ window.setENV = (env) => {
   }
 
   localStorage.setItem(ENV_LOCALSTORAGE_ID, env);
+  window.ENV = env;
   console.log(`Environment successfully set to ${env}`);
 };
 
