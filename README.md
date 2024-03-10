@@ -47,6 +47,21 @@ Note: The setup won't automatically clean up deleted files that already exist in
 
 5. As changes are made to the code locally and saved, the [localhost:3000](http://localhost:3000) will then serve those files
 
+#### Code execution
+
+To execute code after all the scripts have loaded, the script loader emits an event listener on the `window` object. This can come in handy when you want to ensure a certain imported library from another script file has loaded before executing it.
+
+You can use that as following:
+
+   ```html
+   <script>
+      import { SCRIPTS_LOADED_EVENT } from 'src/constants';
+      window.addEventListener(SCRIPTS_LOADED_EVENT, () => {
+         // code to execute after all scripts have loaded
+      });
+   </script>
+   ```
+
 #### Debugging
 
 There is an opt-in debugging setup that turns on logs in the console. The preference can be toggled via browser console, and is stored in browser localStorage.
