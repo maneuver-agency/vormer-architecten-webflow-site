@@ -9,7 +9,7 @@ import './dev/env';
 
 const LOCALHOST_BASE = 'http://localhost:3000/';
 const PRODUCTION_BASE =
-  'https://cdn.jsdelivr.net/gh/parasshah195/vormer-architecten-webflow-site/dist/';
+  'https://cdn.jsdelivr.net/gh/maneuver-agency/vormer-architecten-webflow-site/dist/';
 
 window.JS_SCRIPTS = new Set();
 

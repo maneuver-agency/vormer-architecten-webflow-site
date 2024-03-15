@@ -27,7 +27,7 @@ Note: The setup won't automatically clean up deleted files that already exist in
 1. The initial `entry.js` file needs to be made available via server first for this system to work (in the `<head>` area of the site).
 
    ```html
-   <script src="https://cdn.jsdelivr.net/gh/parasshah195/vormer-architecten-webflow-site/dist/entry.js"></script>
+   <script src="https://cdn.jsdelivr.net/gh/maneuver-agency/vormer-architecten-webflow-site/dist/entry.js"></script>
    ```
 
 2. Add scripts to the Webflow site global settings/page-level, as required, by adding the script path to the `window.JS_SCRIPTS` set. **Do not include `/src` in the file path.**
