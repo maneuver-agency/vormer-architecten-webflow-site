@@ -75,7 +75,7 @@ function fetchLocalScripts() {
     })
     .catch(() => {
       console.error('localhost not resolved. Switching to production');
-      window.setENV('prod');
+      window.setScriptsENV('prod');
     })
     .finally(() => {
       clearTimeout(localhostFetchTimeout);
