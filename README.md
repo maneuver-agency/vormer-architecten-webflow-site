@@ -27,7 +27,7 @@ Note: The setup won't automatically clean up deleted files that already exist in
 1. The initial `entry.js` file needs to be made available via server first for this system to work (in the `<head>` area of the site).
 
    ```html
-   <script src="https://cdn.jsdelivr.net/gh/parasshah195/vormer-architecten-webflow-site/dist/entry.js"></script>
+   <script src="https://cdn.jsdelivr.net/gh/maneuver-agency/vormer-architecten-webflow-site/dist/entry.js"></script>
    ```
 
 2. Add scripts to the Webflow site global settings/page-level, as required, by adding the script path to the `window.JS_SCRIPTS` set. **Do not include `/src` in the file path.**
@@ -41,9 +41,9 @@ Note: The setup won't automatically clean up deleted files that already exist in
 
 3. Whilst working locally, run `bun run dev` to start a development server on [localhost:3000](http://localhost:3000)
 
-4. Execute `window.setENV('dev')` in browser console to serve the file from localhost. If local server is not running, it will error out and serve from production instead. This preference is saved in the browser's localstorage.
+4. Execute `window.setScriptsENV('dev')` in browser console to serve the file from localhost. If local server is not running, it will error out and serve from production instead. This preference is saved in the browser's localstorage.
 
-   - To switch back to production mode, execute `window.setENV('prod')` from console.
+   - To switch back to production mode, execute `window.setScriptsENV('prod')` from console.
 
 5. As changes are made to the code locally and saved, the [localhost:3000](http://localhost:3000) will then serve those files
 

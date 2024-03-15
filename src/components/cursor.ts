@@ -80,6 +80,11 @@ function setLinksInteraction() {
     'mouseenter',
     (e: MouseEvent) => {
       const target = e.target as HTMLElement;
+      if (!target) {
+        window.DEBUG('Unknown target', target);
+        return;
+      }
+
       const isTargetMatch = target.matches(TARGET_SELECTORS_LIST);
       if (!isTargetMatch) {
         return;
